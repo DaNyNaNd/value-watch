@@ -23,6 +23,26 @@ This project optimizes for:
 
 It does not aim to be exhaustive documentation.
 
+## Commit Message Format
+
+This project uses [Conventional Commits](https://www.conventionalcommits.org/).
+
+- `feat:` for user-visible additions to the starter kit
+- `fix:` for corrections
+- `docs:` for documentation-only improvements
+- `chore:` for maintenance
+- `refactor:` for restructuring without changing the framework
+- `feat!:` or `BREAKING CHANGE:` for incompatible template changes
+
+Examples:
+
+- `feat: add pull request template`
+- `fix: correct broken README link`
+- `docs: clarify MVP Contract wording`
+- `chore: normalize markdown formatting`
+
+Release notes and `CHANGELOG.md` entries are generated from these commit messages.
+
 ## What Makes A Good Contribution
 
 - Clarifies existing guidance
