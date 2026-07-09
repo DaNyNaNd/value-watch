@@ -10,6 +10,8 @@ Never move items into the MVP directly.
 
 Instead, promote them into a sprint when the time is right.
 
+If an idea becomes urgent, move it into a sprint document such as [`Sprint-01.md`](Sprint-01.md). Do not add it straight to [`MVP.md`](MVP.md).
+
 ## Quick Ideas
 
 - 

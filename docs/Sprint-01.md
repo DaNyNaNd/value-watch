@@ -5,6 +5,7 @@ This is the only document implementation should follow.
 Keep the sprint small enough to finish in 1-2 weeks.
 
 Use [`Sprint-Template.md`](Sprint-Template.md) for future sprints.
+Check [`MVP.md`](MVP.md) before adding tasks, and move non-essential ideas to [`Future.md`](Future.md).
 
 ## Sprint Goal
 

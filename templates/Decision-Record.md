@@ -1,5 +1,7 @@
 # Decision Record
 
+Use this when a choice needs more detail than the running log in [`../docs/Decisions.md`](../docs/Decisions.md).
+
 ## Decision
 
 <!-- State the decision in one sentence. -->

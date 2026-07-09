@@ -2,7 +2,7 @@
 
 Use this before adding new functionality.
 
-Default recommendation: wait unless the feature is required for the MVP or current sprint.
+Default recommendation: wait unless the feature is required by [`../docs/MVP.md`](../docs/MVP.md) or the current sprint.
 
 ## Problem
 

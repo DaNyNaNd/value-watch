@@ -41,7 +41,7 @@ Never optimize for hypothetical future scale.
 
 ## Sprint Discipline
 
-Only implement tasks found in the active sprint document.
+Only implement tasks found in the active sprint document, such as [`docs/Sprint-01.md`](docs/Sprint-01.md).
 
 Ignore [`docs/Future.md`](docs/Future.md) during implementation.
 

@@ -2,7 +2,7 @@
 
 Engineering log. Append new decisions chronologically.
 
-Use [`../templates/Decision-Record.md`](../templates/Decision-Record.md) when a decision needs more structure.
+Use [`../templates/Decision-Record.md`](../templates/Decision-Record.md) when a decision needs more structure, then summarize the outcome here.
 
 ---
 

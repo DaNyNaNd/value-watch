@@ -31,6 +31,9 @@ Ship first. Improve second.
 - [`templates/Feature-Proposal.md`](templates/Feature-Proposal.md): evaluate new feature requests
 - [`templates/Decision-Record.md`](templates/Decision-Record.md): reusable decision record
 - [`AGENTS.md`](AGENTS.md): permanent instructions for AI coding agents
+- [`CONTRIBUTING.md`](CONTRIBUTING.md): lightweight contribution guide
+- [`CHANGELOG.md`](CHANGELOG.md): release history
+- [`LICENSE`](LICENSE): MIT license
 
 ## Workflow
 
@@ -80,3 +83,16 @@ Ship first. Improve second.
 - If it is a good idea but not required now, put it in [`docs/Future.md`](docs/Future.md).
 - If implementation work is not in the active sprint, do not do it yet.
 - If a shortcut helps the MVP ship, prefer the shortcut.
+
+## Community
+
+If this starter kit helped you ship a product faster, I'd love to hear about it.
+
+Please consider:
+
+- Starring the repository
+- Opening an issue if something is confusing
+- Submitting a pull request with improvements
+- Sharing the repository with other builders
+
+The goal of this project is simple: help people ship meaningful software before scope creep takes over.

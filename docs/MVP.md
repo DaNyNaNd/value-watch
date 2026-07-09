@@ -5,6 +5,8 @@
 
 This document is a contract. Once approved, it should rarely change.
 
+Review [`Future.md`](Future.md) before editing this file to make sure new ideas belong here and not there.
+
 ## Project Name
 
 <!-- Name the project in plain language. -->
