@@ -15,15 +15,28 @@ from .watchlist import read_watchlist
 def _quote_fields(raw: dict) -> dict:
     # Schwab places P/E in fundamental and price fields in quote; normalize the fields this MVP uses.
     quote, fundamental = raw.get("quote", {}), raw.get("fundamental", {})
+    price = quote.get("mark") or quote.get("lastPrice") or quote.get("closePrice")
+    shares = fundamental.get("sharesOutstanding")
     return {"peRatio": fundamental.get("peRatio") or fundamental.get("peRatioTTM") or quote.get("peRatio"),
-            "marketCap": fundamental.get("marketCap") or raw.get("marketCap")}
+            "marketCap": fundamental.get("marketCap") or raw.get("marketCap") or
+                         (price * shares if isinstance(price, (int, float)) and isinstance(shares, (int, float)) else None)}
+
+
+def _to_schwab_symbol(symbol: str) -> str:
+    return symbol.replace(".", "/")
+
+
+def _from_schwab_symbol(symbol: str) -> str:
+    return symbol.replace("/", ".")
 
 
 def run(args: argparse.Namespace) -> Path:
     watchlist = read_watchlist(Path(args.watchlist))
     settings = Settings.from_env()
     client = SchwabClient(settings)
-    quotes = client.quotes([item.symbol for item in watchlist])
+    # Schwab uses slashes for class shares (BRK/B), while the local watchlist uses conventional dots (BRK.B).
+    raw_quotes = client.quotes([_to_schwab_symbol(item.symbol) for item in watchlist])
+    quotes = {_from_schwab_symbol(symbol): value for symbol, value in raw_quotes.items() if symbol != "errors"}
     cache = SecCache(settings.data_dir / "sec.sqlite3")
     ciks = ticker_map()
     results = []

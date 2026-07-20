@@ -30,9 +30,14 @@ class Settings:
     @classmethod
     def from_env(cls, require_credentials: bool = True) -> "Settings":
         load_dotenv()
-        values = {key: os.environ.get(key, "") for key in (
-            "SCHWAB_API_CLIENT_ID", "SCHWAB_API_CLIENT_SECRET", "SCHWAB_API_CALLBACK_URL")}
+        values = {
+            "client_id": os.environ.get("SCHWAB_API_CLIENT_ID", ""),
+            "client_secret": os.environ.get("SCHWAB_API_CLIENT_SECRET", ""),
+            "callback_url": os.environ.get("SCHWAB_API_CALLBACK_URL", ""),
+        }
         if require_credentials and not all(values.values()):
-            missing = ", ".join(key for key, value in values.items() if not value)
+            env_names = {"client_id": "SCHWAB_API_CLIENT_ID", "client_secret": "SCHWAB_API_CLIENT_SECRET",
+                         "callback_url": "SCHWAB_API_CALLBACK_URL"}
+            missing = ", ".join(env_names[key] for key, value in values.items() if not value)
             raise ValueError(f"Missing {missing}. Copy .env.example to .env and fill it in.")
         return cls(**values)

@@ -37,7 +37,8 @@ Authorize once (and again if Schwab expires the refresh token):
 
 After approving the request, the browser may not load `https://127.0.0.1`.
 Copy its complete address-bar URL and paste it into the prompt. The callback URL
-in `.env` must match the Schwab app setting exactly.
+in `.env` must match the Schwab app setting exactly. Authorization codes are
+single-use: if an exchange fails, start `login` again and approve a fresh code.
 
 Generate a live, read-only report:
 

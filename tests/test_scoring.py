@@ -1,5 +1,6 @@
 import unittest
 
+from value_watch.cli import _quote_fields, _to_schwab_symbol
 from value_watch.scoring import score
 
 
@@ -20,3 +21,10 @@ class ScoreTests(unittest.TestCase):
         result = score({}, {})
         self.assertEqual(result.label, "Insufficient data")
         self.assertTrue(all(check.passed is None for check in result.checks))
+
+    def test_market_cap_falls_back_to_mark_times_shares_outstanding(self):
+        fields = _quote_fields({"quote": {"mark": 402.134}, "fundamental": {"sharesOutstanding": 7428434704}})
+        self.assertAlmostEqual(fields["marketCap"], 402.134 * 7428434704)
+
+    def test_class_share_symbol_uses_schwab_slash_format(self):
+        self.assertEqual(_to_schwab_symbol("BRK.B"), "BRK/B")

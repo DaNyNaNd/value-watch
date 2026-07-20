@@ -81,3 +81,29 @@ The first live run may expose symbol-specific data shape differences. These crea
 ## Impact
 
 The `report` command requests only Schwab's market-data quote/fundamental fields and never calls account or order endpoints.
+
+---
+
+## Date
+
+2026-07-20
+
+## Decision
+
+Calculate current market capitalization as Schwab's `mark × sharesOutstanding` when the Market Data Production quote response omits `marketCap`.
+
+## Alternatives Considered
+
+Leave FCF yield unavailable or add a separate market-cap data source.
+
+## Reason
+
+The live Market Data Production response supplies both fields but not a direct market-cap field. The Scorecard explicitly permits this fallback.
+
+## Tradeoffs
+
+The estimate moves with the quote mark and uses Schwab's reported outstanding shares; it is not a separate vendor's fully diluted capitalization figure.
+
+## Impact
+
+FCF yield becomes available for normal common-stock quotes without expanding data sources. Class-share symbols are translated from local `.` notation to Schwab's `/` notation for quote requests.

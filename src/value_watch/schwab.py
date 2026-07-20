@@ -5,7 +5,7 @@ import json
 import webbrowser
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import parse_qs, urlencode, urlparse
+from urllib.parse import parse_qs, unquote, urlencode, urlparse
 
 from .config import Settings
 from .http import request_json
@@ -34,7 +34,8 @@ class SchwabClient:
         print(url)
         webbrowser.open(url)
         redirected = input("Paste redirected URL: ").strip()
-        code = parse_qs(urlparse(redirected).query).get("code", [""])[0]
+        # parse_qs decodes once. unquote covers browsers that preserve a double-encoded code.
+        code = unquote(parse_qs(urlparse(redirected).query).get("code", [""])[0])
         if not code:
             raise ValueError("No authorization code found in the redirected URL.")
         token = request_json(TOKEN_URL, headers=self._headers(), data={

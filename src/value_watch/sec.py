@@ -7,8 +7,8 @@ from pathlib import Path
 
 from .http import request_json
 
-SEC_HEADERS = {"User-Agent": "Value Watch/0.1 contact: local-user@example.invalid",
-               "Accept-Encoding": "gzip, deflate"}
+# Do not request compression: urllib's minimal client does not transparently decode it.
+SEC_HEADERS = {"User-Agent": "Value Watch/0.1 contact: local-user@example.invalid"}
 TICKERS_URL = "https://www.sec.gov/files/company_tickers.json"
 FACTS_URL = "https://data.sec.gov/api/xbrl/companyfacts/CIK{cik:010d}.json"
 

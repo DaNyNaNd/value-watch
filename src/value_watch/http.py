@@ -17,5 +17,9 @@ def request_json(url: str, *, headers: dict[str, str] | None = None,
     try:
         with urlopen(request, timeout=timeout) as response:
             return json.loads(response.read())
-    except (HTTPError, URLError, json.JSONDecodeError) as exc:
+    except HTTPError as exc:
+        # OAuth errors are actionable (for example, invalid_grant) but request bodies never contain secrets.
+        detail = exc.read().decode("utf-8", errors="replace").strip()
+        raise HttpError(f"Request failed for {url}: HTTP {exc.code} {detail or exc.reason}") from exc
+    except (URLError, json.JSONDecodeError) as exc:
         raise HttpError(f"Request failed for {url}: {exc}") from exc
