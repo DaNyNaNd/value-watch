@@ -9,7 +9,7 @@ Check [`MVP.md`](MVP.md) before adding tasks, and move non-essential ideas to [`
 
 ## Sprint Goal
 
-<!-- One sentence. What should be true by the end of this sprint? -->
+Run a local weekly report for a small personal watchlist that ranks transparent value and quality checks without accessing trading functions.
 
 ## Definition of Done
 
@@ -22,15 +22,24 @@ Check [`MVP.md`](MVP.md) before adding tasks, and move non-essential ideas to [`
 
 <!-- Keep this to roughly ten implementation tasks or fewer. -->
 
-- [ ] Example: Create the project repository and baseline setup
-- [ ] Example: Implement the core user flow
-- [ ] Example: Add the simplest persistence needed for the MVP
+- [ ] Create the smallest executable project skeleton, test command, and local-only configuration example.
+- [ ] Define the 5–20 ticker watchlist file, including the required one-sentence business description.
+- [ ] Implement authenticated, read-only Schwab quote retrieval and validate the exact fields returned for the initial watchlist.
+- [ ] Implement SEC Company Facts retrieval, ticker-to-CIK mapping, and a SQLite cache for filing-derived annual metrics.
+- [ ] Calculate and display P/E, free-cash-flow yield, five-year revenue/EPS trends, free-cash-flow consistency, ROE when available, and a debt sanity check.
+- [ ] Implement the published rules in `docs/Scorecard.md`, including data definitions and “insufficient data” behavior next to the generated output.
+- [ ] Generate one Markdown report sorted into review, watch, and insufficient-data sections.
+- [ ] Add an on-demand command plus a documented weekly local scheduler setup; test it with a dry run.
+- [ ] Add fixture-based tests for calculations and a report snapshot test using no credentials.
+- [ ] Record API and data-source shortcuts in `docs/Decisions.md` and deferred ideas in `docs/Future.md`.
 
 ## Acceptance Criteria
 
-- Example: A first-time user can complete the core flow without help
-- Example: Data created by the flow is saved and can be retrieved
-- Example: The implementation matches [`MVP.md`](MVP.md)
+- With valid local Schwab credentials, one command produces a report for a 5–20-symbol watchlist without requesting account or order scopes.
+- Each reported decision label identifies the metric(s) that caused it; missing or stale values are explicit rather than inferred as zero.
+- The report contains no buy/sell wording, order controls, account balances, or personally identifying account data.
+- Re-running with saved fixtures succeeds offline and gives stable calculation results.
+- The implementation matches [`MVP.md`](MVP.md).
 
 ## Blocked Items
 
@@ -40,8 +49,11 @@ Check [`MVP.md`](MVP.md) before adding tasks, and move non-essential ideas to [`
 
 <!-- Put tempting ideas here instead of expanding this sprint. -->
 
-- Example: Admin dashboard
-- Example: Team collaboration features
+- Automated DCF and historical valuation bands
+- AI filing summaries and qualitative moat/management assessment
+- News, analyst, options, and insider-trading data
+- Notifications, email, web dashboard, and cloud scheduling
+- Portfolio tracking or broker-account functionality
 
 ## Retrospective
 

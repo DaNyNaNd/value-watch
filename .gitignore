@@ -1,4 +1,9 @@
 .DS_Store
+.env
+.env.*
+!.env.example
+data/
+reports/
 .idea/
 .vscode/
 Thumbs.db
