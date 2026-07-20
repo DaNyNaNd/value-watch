@@ -1,0 +1,4 @@
+#!/bin/sh
+# Local launcher: no package installation or third-party dependencies required.
+PROJECT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+PYTHONPATH="$PROJECT_DIR/src${PYTHONPATH:+:$PYTHONPATH}" exec python3 -m value_watch.cli "$@"
